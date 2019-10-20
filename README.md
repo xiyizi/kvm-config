@@ -138,4 +138,9 @@ Now on to actually creating the virtual machine. The version I used included in 
 fallocate -l 300G /media/stuff/win10.img
 ```
 
-You can enlarge it afterwards if you make it too small but beware it can be a hassle.
+You can enlarge it afterwards if you make it too small but beware it can be a hassle if you need to embiggen it _after_ you've installed Windows to it. Beware of creating an image on a removable drive that your window manager auto-mounts for you. It does something weird to the permissions and doesn't let the machine boot up. I specifically added my second hard drive to _/etc/stab/_ to avoid this problem.
+
+Now fire up Virtual Manager and create a new machine:
+
+![alt text](https://i.imgur.com/ms7ei05.png "Post a comment on this webzone if you want a pizza roll")
+
