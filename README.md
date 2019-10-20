@@ -135,7 +135,7 @@ The nvidia card can now be pass through to a virtual-machine.
 Now on to actually creating the virtual machine. The version I used included in the standard Ubuntu repositories as of version 19.04 (version 2.2.1) makes it all pretty simple. First, create a raw image to use as the hard disk for the virtual machine:
 
 ```shell
-fallocate -l 300G /media/stuff/win10.img
+fallocate -l 300G /media/extra/win/win10.img
 ```
 
 You can enlarge it afterwards if you make it too small but beware it can be a hassle if you need to embiggen it _after_ you've installed Windows to it. Beware of creating an image on a removable drive that your window manager auto-mounts for you. It does something weird to the permissions and doesn't let the machine boot up. I specifically added my second hard drive to _/etc/stab/_ to avoid this problem.
@@ -144,3 +144,56 @@ Now fire up Virtual Manager and create a new machine:
 
 ![alt text](https://i.imgur.com/ms7ei05.png "Post a comment on this webzone if you want a pizza roll")
 
+![part 2](https://i.imgur.com/6bujvLU.png "fuck movies")
+
+I used the ISO you can download from [Microsoft's website](https://www.microsoft.com/en-gb/software-download/windows10ISO)
+
+![part 3](https://i.imgur.com/OC5mIf3.png "a gangsta ride blades if you ain't gon ride fly then you might as well hate")
+
+I didn't want my virtual machine to gobble up *all* my RAM so I only gave it 12gb.
+
+![part 4](https://i.imgur.com/2uB2QaU.png "no way")
+
+Using the image I created earlier.
+
+![part 5](https://i.imgur.com/WvUPDMO.png "my shit is custom")
+
+Customise installation before continuing is a must so make sure it's checked.
+
+![part 6](https://i.imgur.com/0O53LVQ.png "Q is the best character in Star Trek")
+
+I used Q35 as my machine type and selected UEFI code for my firmware.
+
+![part 7](https://i.imgur.com/3JO8N1E.png "hardware")
+
+Click `add hardware` and select your nvidia card in the PCI selection. Click add hardware and also add your nvidia card's sound controller.
+
+Begin the installation! I was brought t the UEFI bootloader screen so type `exit` to reach the boot selection screen and choose the ISO cd rom device. The monitor you have attached to your pass-through GPU may or may not work at this point. I had to take some extra steps after installation to get it to work.
+
+Specifically, I had to run
+
+```shell
+sudo virsh edit win10
+```
+
+And add the following xml in between the features brackets:
+
+
+```xml
+  <features>
+    <acpi/>
+    <apic/>
+    <hyperv>
+      <relaxed state="on"/>
+      <vapic state="on"/>
+      <spinlocks state="on" retries="8191"/>
+      <vendor_id state="on" value="1234567890ab"/>
+    </hyperv>
+    <kvm>
+      <hidden state="on"/>
+    </kvm>
+    <vmport state="off"/>
+    <ioapic driver="kvm"/>
+  </features>
+```
+That allowed my monitor to work on the next boot of the virtual machine.
