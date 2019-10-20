@@ -19,7 +19,7 @@ XML config and startup settings for GPU-passthrough of a second nVidia card
   - svm must be enabled in BIOS
   - iommu group manipulation must be enabled in BIOS
   - GPU must be isolated and passed through to VFIO via script during boot process, *before* nvidia driver loads
-  the GPU you want to pass through should be in the *second* PCI-e slot
+  - the GPU you want to pass through should be in the *second* PCI-e slot
   - sound not working yet - this is a work in progress
   
 # How I did it:
@@ -132,3 +132,10 @@ And checking the output:
 
 The nvidia card can now be pass through to a virtual-machine.
 
+Now on to actually creating the virtual machine. The version I used included in the standard Ubuntu repositories as of version 19.04 (version 2.2.1) makes it all pretty simple. First, create a raw image to use as the hard disk for the virtual machine:
+
+```shell
+fallocate -l 300G /media/stuff/win10.img
+```
+
+You can enlarge it afterwards if you make it too small but beware it can be a hassle.
