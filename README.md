@@ -1,3 +1,7 @@
+# Note to wayfarers of the internet
+
+This is more of an aide-memoire than a tutorial anyone should try to follow. Lots of the tutorials out there for getting GPU-accelerated virtual machines running are wildly inconsistent and may break your set-up. Ultimately I stumbled on a combination that works for my specific hardware via lots of trial and effort. The following bits of information are for me to use in case I ever break or blow up my computer and have to do it all again.
+
 # kvm-config
 XML config and startup settings for GPU-passthrough of a second nVidia card
 
