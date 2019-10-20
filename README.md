@@ -27,7 +27,8 @@ XML config and startup settings for GPU-passthrough of a second nVidia card
 install the required packages:
 
 `````shell
- sudo apt-get install libvirt0 bridge-utils virt-manager qemu-kvm ovmf`````
+sudo apt-get install libvirt0 bridge-utils virt-manager qemu-kvm ovmf
+`````
   
 make changes to _/etc/default/grub_:
 
@@ -36,17 +37,20 @@ make changes to _/etc/default/grub_:
 Update grub:
 
 ```shell
-sudo update-grub```
+sudo update-grub
+```
 
 Reboot and check everything is all good:
 
 ```shell 
-virt-host-validate```
+virt-host-validate
+```
 
 Identify PCI device:
 
 ```shell
-lspci -nnv```
+lspci -nnv
+```
   
 Find the numbers of your nvidia GPU you want to pass through. A sound device will be part of your graphics card so pass that through too:
 
@@ -65,7 +69,8 @@ softdep nvidia pre: vfio vfio_pci
 softdep nvidiafb pre: vfio vfio_pci
 softdep nvidia_drm pre: vfio vfio_pci
 softdep nouveau pre: vfio vfio_pci
-options vfio-pci ids=10de:1c82,10de:0fb9 disable_vga=1```
+options vfio-pci ids=10de:1c82,10de:0fb9 disable_vga=1
+```
   
 And by editing _/etc/initramfs-tools/modules_:
 
@@ -82,21 +87,25 @@ options vfio_pci ids=10de:1c82,10de:0fb9
 vfio_pci ids=10de:1c82,10de:0fb9
 vfio_pci
 nvidiafb
-nvidia```
+nvidia
+```
   
 And by editing _/etc/modprobe.d/kvm.conf_:
 
 ```shell
-options kvm ignore_msrs=1```
+options kvm ignore_msrs=1
+```
   
 Update init:
 ```shell
-  sudo update-initramfs -u```
+  sudo update-initramfs -u
+  ```
   
 Reboot and your second card should be completely isolated from your main operating system. nvidia control panel shouldn't even be able to see it even exists. You can check by running 
 
 ```shell
-lspci -nnv```
+lspci -nnv
+```
   
 And checking the output:
 
@@ -118,7 +127,8 @@ And checking the output:
         Capabilities: [420] Advanced Error Reporting
         Capabilities: [600] Vendor Specific Information: ID=0001 Rev=1 Len=024 <?>
         Capabilities: [900] Secondary PCI Express <?>
-        Kernel driver in use: vfio-pci```
+        Kernel driver in use: vfio-pci
+```
 
 The nvidia card can now be pass through to a virtual-machine.
 
