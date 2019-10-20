@@ -1,11 +1,11 @@
 # kvm-config
 XML config and startup settings for GPU-passthrough of a second nVidia card
 
-  Operating System: Kubuntu 19.10
-  Kernel Version: 5.3.0-18-generic
-  OS Type: 64-bit
-  Processors: 8 × AMD FX(tm)-8350 Eight-Core Processor
-  Memory: 15.6 GiB of RAM
+  * Operating System: Kubuntu 19.10
+  * Kernel Version: 5.3.0-18-generic
+  * OS Type: 64-bit
+  * Processors: 8 × AMD FX(tm)-8350 Eight-Core Processor
+  * Memory: 15.6 GiB of RAM
 
   Host GPU: Nvidia 750GT 2GB
   Guest GPU: Nvidia 1050TI 4GB
