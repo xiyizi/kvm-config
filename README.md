@@ -26,8 +26,8 @@ XML config and startup settings for GPU-passthrough of a second nVidia card
 
 install the required packages:
 
-```shell
- sudo apt-get install libvirt0 bridge-utils virt-manager qemu-kvm ovmf```
+`````shell
+ sudo apt-get install libvirt0 bridge-utils virt-manager qemu-kvm ovmf`````
   
 make changes to _/etc/default/grub_:
 
