@@ -1,21 +1,21 @@
 # kvm-config
 XML config and startup settings for GPU-passthrough of a second nVidia card
 
-Operating System: Kubuntu 19.10
-Kernel Version: 5.3.0-18-generic
-OS Type: 64-bit
-Processors: 8 × AMD FX(tm)-8350 Eight-Core Processor
-Memory: 15.6 GiB of RAM
+  Operating System: Kubuntu 19.10
+  Kernel Version: 5.3.0-18-generic
+  OS Type: 64-bit
+  Processors: 8 × AMD FX(tm)-8350 Eight-Core Processor
+  Memory: 15.6 GiB of RAM
 
-Host GPU: Nvidia 750GT 2GB
-Guest GPU: Nvidia 1050TI 4GB
+  Host GPU: Nvidia 750GT 2GB
+  Guest GPU: Nvidia 1050TI 4GB
 
-Guest operating system: Windows 10 64bit
+  Guest operating system: Windows 10 64bit
 
-Virtual Machine Manager version 2.2.1
-qemu version 4.0
+  Virtual Machine Manager version 2.2.1
+  qemu version 4.0
 
-Key points: 
+# Key points: 
   svm must be enabled in BIOS
   iommu group manipulation must be enabled in BIOS
   GPU must be isolated and passed through to VFIO via script during boot process, *before* nvidia driver loads
