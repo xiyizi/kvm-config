@@ -200,4 +200,13 @@ And add the following xml in between the features brackets:
     <ioapic driver="kvm"/>
   </features>
 ```
-That allowed my monitor to work on the next boot of the virtual machine.
+That allowed my monitor to work on the next boot of the virtual machine. Then to get sound working via pulseaudio, I had to add to the bottom of my xml file this:
+
+```xml
+  <qemu:commandline>
+    <qemu:env name="QEMU_AUDIO_DRV" value="pa"/>
+    <qemu:env name="QEMU_PA_SERVER" value="/run/user/1000/pulse/native"/>
+  </qemu:commandline>
+```
+
+Finally, I bought a KVM switching tool. There are several good ones to buy on various electronic websites. I have one that switches monitors and my mouse and keyboard at the press of a button on my desk. Very handy!
