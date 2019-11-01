@@ -24,7 +24,7 @@ XML config and startup settings for GPU-passthrough of a second nVidia card
   - iommu group manipulation must be enabled in BIOS
   - GPU must be isolated and passed through to VFIO via script during boot process, *before* nvidia driver loads
   - the GPU you want to pass through should be in the *second* PCI-e slot
-  - sound not working yet - this is a work in progress
+
   
 # How I did it:
 
